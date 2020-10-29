@@ -55,6 +55,9 @@
 		<mapping class="com.revature.model.Realm"/>
 		<mapping class="com.revature.model.Appointment"/>
 		<mapping class="com.revature.model.Person"/>
+		<mapping class="com.revature.model.AuthTable"/>
+		<mapping class="com.revature.model.Prescription"/>
+		<mapping class="com.revature.model.Medication"/>
 		
 	</session-factory>
 </hibernate-configuration>
