@@ -53,6 +53,8 @@
 		<mapping class="com.revature.model.MonsterCard"/>
 		<mapping class="com.revature.model.CardClass"/>
 		<mapping class="com.revature.model.Realm"/>
+		<mapping class="com.revature.model.Appointment"/>
+		<mapping class="com.revature.model.Person"/>
 		
 	</session-factory>
 </hibernate-configuration>
