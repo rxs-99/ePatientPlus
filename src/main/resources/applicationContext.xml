@@ -1,0 +1,75 @@
+<!-- This XML file is used to define our Application Context. We can add 
+	beans to our IOC container here. We'll also configure our Spring modules 
+	here. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- We don't ideally want to define all our beans via this XML file. Sometimes
+	we want to use annotations instead! In order to do so, however, we need to specify
+	that we want to use an annotation-driven approach here in our applicationContext.xml -->
+	
+	<!-- Activate the annotations, meaning that we want to use an annotation-driven
+	approach. -->
+	<context:annotation-config></context:annotation-config>
+	
+	<!-- We must also specify the packages inside of which we will use Spring
+	annotations. -->
+	
+	<context:component-scan base-package="com.revature"></context:component-scan>
+
+	
+	<!-- Let's enable the use of AspectJ style of AOP. -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!-- Let's define a bean that we want Spring to manage the life cycle of 
+		for us! 
+		
+		Spring Beans can have one of several scopes. The default scope is known as the
+		"singleton" scope. There are, of course, other scopes as well:
+		
+		Prototype: a new instance of the bean is returned each time an instance is request
+		Session: a single instance of a bean is used with a specific session (e.g. in web apps)
+		Request: a single instance of a bean is used per request
+		
+		We need to establish a relationship between our beans. This known as "bean
+		wiring".
+		
+		Spring has a few ways of injecting beans for us. The default method (if no other
+		method is specified) is setter injection.
+		
+		You can also use either field injection or constructor injection. Field injection
+		entails injecting a dependency via a field on a class. Constructor injections
+		entails uses a class' constructor to inject a dependency.-->
+	<bean name="monsterCardService" class="com.revature.service.MonsterCardService" scope="singleton" autowire="byName">
+		<!-- We can define a "property" of our bean. This property is a dependency
+		of the bean type. In other words, we know that our service has a MonsterCardRepoImpl field,
+		so the repo is a property of the service. -->
+		<!--<property name="monsterCardRepository" ref="monsterCardRepository"></property>-->
+		<!-- If you wish to use constructor injection: -->
+		<!-- <constructor-arg index="0" ref="monsterCardRepository"></constructor-arg> -->
+		<aop:scoped-proxy/>
+	</bean>
+	
+	<!-- In terms of wiring beans, we can take of advantage of "autowiring". This occurs
+	when the framework wires beans in for us as needed. Spring can wire beans in by:
+	
+	byName: the framework looks for a bean with the given name in the IOC container 
+	
+	byType: the framework looks for a bean with the given type in the IOC container;
+	if there are multiple beans with the same type, this won't work!
+	
+	constructor: the framework looks for a bean with a given type in the constructor.
+	If the constructor has two args of the same type, this won't work!-->
+	
+	<bean name="monsterCardRepository" class="com.revature.repository.MonsterCardRepositoryImpl">
+		<aop:scoped-proxy/>
+	</bean>
+	
+
+</beans>
