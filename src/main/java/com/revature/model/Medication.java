@@ -17,12 +17,12 @@ public class Medication {
     @SequenceGenerator(allocationSize = 1, name = "medication_id_seq", sequenceName = "medication_id_seq")
     private int id;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String supplier;
 
-    @Column
+    @Column(nullable = false)
     private int amountStored;
 }

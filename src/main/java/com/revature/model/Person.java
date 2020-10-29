@@ -17,13 +17,13 @@ public class Person {
 	@SequenceGenerator(allocationSize = 1, name = "person_id_seq", sequenceName = "person_id_seq")
     private int personID;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String phone;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String email;
 
 

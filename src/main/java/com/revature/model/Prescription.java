@@ -20,17 +20,17 @@ public class Prescription {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "medicationid")
+    @JoinColumn(name = "medicationid", nullable = false)
     private Medication medication;
 
     @ManyToOne
-    @JoinColumn(name = "prescribedto")
+    @JoinColumn(name = "prescribedto", nullable = false)
     private Person patient;
 
     @ManyToOne
-    @JoinColumn(name = "prescribedby")
+    @JoinColumn(name = "prescribedby", nullable = false)
     private Person doctor;
 
-    @Column
+    @Column(nullable = false)
     private double dosage;
 }

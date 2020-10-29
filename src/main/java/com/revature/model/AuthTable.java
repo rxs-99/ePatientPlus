@@ -14,10 +14,10 @@ public class AuthTable {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @OneToOne
-    @JoinColumn(name = "personid")
+    @JoinColumn(name = "personid", nullable = false, unique = true)
     private Person person;
 }

@@ -23,7 +23,7 @@ public class Appointment {
 
     
     @ManyToOne
-    @JoinColumn(name = "patientid")
+    @JoinColumn(name = "patientid", nullable = false)
     private Person patient;
 
     @ManyToOne
@@ -33,7 +33,7 @@ public class Appointment {
     @Column(name = "date")
     private Date date;
 
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
 
     @Column(name = "comment")
