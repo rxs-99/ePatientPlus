@@ -4,8 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class LoginServiceTest {
-
-	@Test
+	
 	public void testLogin() {
 		LoginService l = new LoginService();
 		
